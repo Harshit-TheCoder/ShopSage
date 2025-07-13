@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSage - Your Voice-Driven Grocery Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    {% include 'header.html' %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% include 'footer.html' %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => { 
+            const voiceBtn = document.getElementById("voice-navigate-btn");
+            const voiceStatus = document.getElementById("voice-status");
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                voiceStatus.innerText = "Voice search is not supported in this browser.";
+                voiceBtn.disabled = true;
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-IN';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            voiceBtn.addEventListener("click", () => {
+                recognition.start();
+                voiceStatus.innerText = "Listening...";
+            });
+
+            const navigationCommands = {
+                "go to cart": "/cart",
+                "cart": "/cart",
+                "go to shop": "/shop",
+                "shop": "/shop",
+                "go to about": "/about",
+                "about": "/about",
+                "go to home": "/",
+                "navigate to home": "/",
+                "navigate to cart": "/cart",
+                "navigate to shop": "/shop",
+                "navigate to about": "/about",
+                "billing page": "/buy",
+                "i want to go to the billing page": "/buy",
+                "my shopping is done": "/buy",
+                "billing page": "/buy",
+                "nothing else required": "/buy",
+                "can you go to cart please": "/cart",
+                "can you go to home please": "/",
+
+            };
+
+
+            recognition.onresult = event => {
+                const query = event.results[0][0].transcript.toLowerCase();
+                voiceStatus.innerText = `You said: "${query}"`;
+
+                if (navigationCommands[query.toLowerCase()]) {
+                    window.location.href = navigationCommands[query.toLowerCase()];
+                    return;
+                }
+            };
+
+            recognition.onerror = event => {
+                voiceStatus.innerText = `Error: ${event.error}`;
+            };
+        });
+    </script>
+</body>
+</html>

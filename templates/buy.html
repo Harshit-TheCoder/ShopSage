@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex flex-col md:flex-row gap-8 m-8">
+
+  <!-- Left Side: User Details -->
+    <div class="flex-1 bg-white p-6 rounded-lg shadow w-[40%]">
+        <center><h2 class="text-xl font-bold mb-4">Shipping Details</h2></center>
+        <form id="checkout-form" class="space-y-4">
+        <label for="name" class="font-bold text-lg">Name:</label>
+        <input type="text" name="name" placeholder="Full Name" required class="w-full border p-2 rounded">
+        <label for="email" class="font-bold text-lg">Email:</label>
+        <input type="email" name="email" placeholder="Email" required class="w-full border p-2 rounded">
+        <label for="address" class="font-bold text-lg">Address:</label>
+        <textarea name="address" placeholder="Delivery Address" required class="w-full border p-2 rounded"></textarea>
+        <label for="payment" class="font-bold text-lg">Select Mode of Payment:</label>
+        <div class="flex gap-4 mb-6">
+            <label for="pay" class="flex items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay" onclick="selectMode('cod');" value="cod" class="accent-indigo-500"> Pay On Delivery
+            </label>
+            <label for="pay" class="flex items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay" onclick="selectMode('upi');" value="upi" class="accent-indigo-500"> UPI
+            </label>
+            <label for="pay" class="flex items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay" onclick="selectMode('card');" value="card" class="accent-indigo-500"> Debit/Credit Card
+            </label>
+        </div>
+
+        <!-- UPI Options -->
+        <div id="upi-options" class="hidden space-y-4">
+            <p class="font-semibold">Choose UPI App:</p>
+            <div class="flex gap-4">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="radio" name="upi" value="GooglePay" class="accent-indigo-500">
+                    <img src="static/images/google-pay.png" alt="GooglePay" class="w-[100px] h-[80px] object-contain">
+                </label>
+
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="radio" name="upi" value="PhonePe" class="accent-indigo-500">
+                    <img src="static/images/phonepe.png" alt="PhonePe" class="w-[100px] h-[80px] object-contain"> 
+                </label>
+
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="radio" name="upi" value="Paytm" class="accent-indigo-500">
+                    <img src="static/images/paytm.png" alt="Paytm" class="w-[100px] h-[80px] object-contain"> 
+                </label>
+
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="radio" name="upi" value="Bhim" class="accent-indigo-500">
+                    <img src="static/images/bhim.png" alt="Bhim" class="w-[100px] h-[80px] object-contain">
+                </label>
+            </div>
+            <input type="text" name="upi-id" id="upi-id" class="border p-2 rounded w-full" placeholder="UPI ID">
+        </div>
+
+        <!-- Card Options -->
+        <div id="card-options" class="hidden space-y-4">
+            <p class="font-semibold mt-4">Choose Bank:</p>
+            <div class="flex flex-row gap-4">
+                <div>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="HDFC" class="accent-indigo-500">
+                        <img src="static/images/hdfc-bank.jpg" alt="HDFC" class="w-[100px] h-[70px] object-contain"> HDFC Bank
+                    </label>
+
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="SBI" class="accent-indigo-500">
+                        <img src="static/images/sbi.jpg" alt="SBI" class="w-[100px] h-[70px] object-contain"> State Bank of India (SBI)
+                    </label>
+
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="AXIS" class="accent-indigo-500">
+                        <img src="static/images/axisbank.jpg" alt="Axis" class="w-[100px] h-[70px] object-contain"> Axis Bank
+                    </label>
+                </div>
+                <div>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="PNB" class="accent-indigo-500">
+                        <img src="static/images/pnb.jpg" alt="PNB" class="w-[100px] h-[70px] object-contain"> Punjab National Bank (PNB)
+                    </label>
+
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="BOB" class="accent-indigo-500">
+                        <img src="static/images/bob.png" alt="BOB" class="w-[100px] h-[70px] object-contain"> Bank of Baroda (BOB)
+                    </label>
+
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="bank" value="ICICI" class="accent-indigo-500">
+                        <img src="static/images/icici.png" alt="ICICI" class="w-[100px] h-[70px] object-contain"> ICICI Bank
+                    </label>
+                </div>
+            </div>
+
+            <input type="text" name="card-number" id="card-number" class="border p-2 rounded w-full" placeholder="Card Number (0000 0000 0000 0000)">
+            <div class="flex gap-4">
+            <input type="text" name="expiry" id="expiry" class="border p-2 rounded flex-1" placeholder="MM/YY">
+            <input type="text" name="cvv" id="cvv" class="border p-2 rounded flex-1" placeholder="CVV">
+            </div>
+        </div>
+
+        <p id="estimated-delivery" class="text-md text-gray-600 font-semibold"></p>
+        <input type="hidden" name="payment_mode" id="payment_mode">
+        <button type="submit" class="bg-indigo-600 text-white w-[50%] p-2 rounded ">Place Order</button>
+        </form>
+    </div>
+
+  <!-- Right Side: Bill Summary -->
+    <div class="flex-1 bg-white p-6 rounded-lg shadow overflow-y-auto max-h-[500px]">
+        <center><h2 class="text-xl font-bold mb-4">VocalMart Bill Summary</h2></center>
+
+        <div id="bill-items" class="space-y-2  pr-2"></div>
+
+        <div class="mt-4 flex flex-col border-t pt-4">
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">Subtotal: </div>
+                <div id="subtotal"></div>
+            </div>
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">Discount: </div>
+                <div id="discount"></div>
+            </div>
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">CGST (18%): </div>
+                <div id="cgst"></div>
+            </div>
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">SGST (18%): </div>
+                <div id="sgst"></div>
+            </div>
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">Delivery Fee: </div>
+                <div id="delivery-fee"></div>
+            </div>
+            <div class="flex flex-row m-2">
+                <div class="w-[80%]">Total: </div>
+                <div id="total" class="font-bold text-lg"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="payment-processing" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center text-white text-3xl">
+    Processing Payment...
+</div>
+
+<script type="module">
+    import { tshirts, shirts, jeans, cargopants } from '../static/js/index.js';
+    import { apiProducts } from "../static/js/products.js";
+    document.getElementById("checkout-form").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        document.getElementById("payment-processing").classList.remove("hidden");
+
+        const formData = new FormData(this);
+
+        const response = await fetch("/process_payment", {
+            method: "POST",
+            body: formData
+        });
+
+        if (response.ok) {
+            setTimeout(() => {
+                window.location.href = "/thankyou";
+            }, 3000);
+        } else {
+            alert("Payment failed!");
+            document.getElementById("payment-processing").classList.add("hidden");
+        }
+    });
+
+    function selectMode(mode) {
+        // selectedMode = mode;
+        document.getElementById('payment_mode').value = mode;
+        document.getElementById("upi-options").classList.toggle("hidden", mode !== "upi");
+        document.getElementById("card-options").classList.toggle("hidden", mode !== "card");
+    }
+
+    let subtotal = 0, discount = 0, deliveryFee = 0, deliveryTime = 0;
+    document.addEventListener('DOMContentLoaded', async function() {
+        const billItemsContainer = document.getElementById("bill-items");
+        const products = [...apiProducts, ...tshirts, ...shirts, ...jeans, ...cargopants];
+        const cartProductIds = JSON.parse(localStorage.getItem("cart")) || [];
+        const productsInCart = products.filter(product => cartProductIds.includes(product.id));
+
+        let len = productsInCart.length, counter = 20;
+        for (let i = 1; i <= len; i += 5) {
+            deliveryFee += counter;
+            deliveryTime += 1;
+        }
+
+        productsInCart.forEach(product => {
+            const convertedPrice = product.price * 86; // Convert USD → INR
+            const convertedDiscount = product.discount ? (product.discount * 86) : 0; // Convert USD → INR
+
+            subtotal += convertedPrice;
+            discount += convertedDiscount;
+
+            const discountedPrice = convertedPrice - convertedDiscount;
+
+            const itemHtml = `
+                <div class="flex flex-row gap-2 justify-between  pb-2">
+                    <div class="w-[80%]">${product.title}</div>
+                    <div class="flex flex-col gap-2 justify-between pb-2">
+                        <div class="text-gray-500 line-through">₹${convertedPrice.toFixed(2)}</div>
+                        <div>₹${discountedPrice.toFixed(2)}</div>
+                    </div>
+                </div>
+            `;
+            billItemsContainer.innerHTML += itemHtml;
+        });
+
+        const taxableAmount = subtotal - discount;
+        const cgst = 0.18 * taxableAmount;
+        const sgst = 0.18 * taxableAmount;
+        const total = taxableAmount + cgst + sgst + deliveryFee;
+
+                // Update values in bill summary (using ₹ symbol)
+        document.getElementById("subtotal").textContent = `₹${subtotal.toFixed(2)}`;
+        document.getElementById("discount").textContent = `-₹${discount.toFixed(2)}`;
+        document.getElementById("cgst").textContent = `₹${cgst.toFixed(2)}`;
+        document.getElementById("sgst").textContent = `₹${sgst.toFixed(2)}`;
+        document.getElementById("delivery-fee").textContent = `₹${deliveryFee.toFixed(2)}`;
+        document.getElementById("total").textContent = `₹${total.toFixed(2)}`;
+        document.getElementById("estimated-delivery").textContent = `Estimated Delivery: ${deliveryTime} Days`;
+    });
+    window.selectMode = selectMode;
+</script>
+{% endblock %}
+
+

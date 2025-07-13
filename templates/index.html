@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-indigo-700 text-white">
+    <div class="text-center px-6 md:px-12">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Welcome to ShopSage</h1>
+        <p class="text-lg md:text-xl mb-8">Shop products effortlessly with voice commands. Seamless, simple, smart.</p>
+        <div class="space-x-4">
+            <a href="/shop" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100">Start Shopping</a>
+            <a href="/about" class="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600">Learn More</a>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Why ShopSage?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="text-5xl mb-4">🎤</div>
+                <h3 class="text-xl font-semibold mb-2">Voice-Enabled Shopping</h3>
+                <p>Order products using simple voice commands. Hands-free and easy to use.</p>
+            </div>
+            <div class="text-center">
+            <div class="text-5xl mb-4">🛒</div>
+                <h3 class="text-xl font-semibold mb-2">Fast Cart Management</h3>
+                <p>Add, remove, and check out items in just a few clicks or words.</p>
+            </div>
+            <div class="text-center">
+                <div class="text-5xl mb-4">🔒</div>
+                <h3 class="text-xl font-semibold mb-2">Secure & Reliable</h3>
+                <p>Your information is safe, and orders are processed with care and speed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
