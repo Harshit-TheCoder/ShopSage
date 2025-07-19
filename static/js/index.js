@@ -8,7 +8,7 @@ export const tshirts = [
     "brand": "Allen Solly",
     "model": "69",
     "color": "Black",
-    "category": "clothing",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -21,7 +21,7 @@ export const tshirts = [
     "brand": "Van Heusen",
     "model": "456",
     "color": "White",
-    "category": "furniture",
+    "category": "tshirt",
     "popular": false,
     "discount": 2
   },
@@ -34,7 +34,7 @@ export const tshirts = [
     "brand": "Nike",
     "model": "213",
     "color": "Blue",
-    "category": "clothing",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -47,7 +47,7 @@ export const tshirts = [
     "brand": "Polo",
     "model": "708",
     "color": "Black",
-    "category": "electronics",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -60,7 +60,7 @@ export const tshirts = [
     "brand": "United Colors of Benetton",
     "model": "301",
     "color": "Red",
-    "category": "sports",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -73,7 +73,7 @@ export const tshirts = [
     "brand": "Arrow",
     "model": "204",
     "color": "White",
-    "category": "gaming",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -86,7 +86,7 @@ export const tshirts = [
     "brand": "Mango",
     "model": "501",
     "color": "Blue",
-    "category": "clothing",
+    "category": "tshirt",
     "popular": true,
     "discount": 2
   },
@@ -492,3 +492,138 @@ export const cargopants = [
     "discount": 2
   }
 ]
+
+
+export const jackets = [
+  {
+    "id": 198,
+    "title": "Peter England Jacket",
+    "image": "static/images/jackets/jacket1.png",
+    "price": 19,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Peter England",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 199,
+    "title": "Puma Jacket",
+    "image": "static/images/jackets/jacket2.png",
+    "price": 19,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Puma",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 201,
+    "title": "Levi's Jacket",
+    "image": "static/images/jackets/jacket3.png",
+    "price": 16,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Levi's",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 202,
+    "title": "Allen Solly Jacket",
+    "image": "static/images/jackets/jacket4.png",
+    "price": 14,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Allen Solly",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 203,
+    "title": "Wrangler Jacket",
+    "image": "static/images/jackets/jacket5.png",
+    "price": 15,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Wrangler",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 204,
+    "title": "Looney Jacket",
+    "image": "static/images/jackets/jacket6.png",
+    "price": 21,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Looney",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 205,
+    "title": "H&M Jacket",
+    "image": "static/images/jackets/jacket7.png",
+    "price": 20,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "H&M",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 206,
+    "title": "Mufti Jacket",
+    "image": "static/images/jackets/jacket8.png",
+    "price": 20,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Mufti",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 207,
+    "title": "Woodland Jacket",
+    "image": "static/images/jackets/jacket9.png",
+    "price": 20,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Woodland",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  },
+  {
+    "id": 208,
+    "title": "Spykar Jacket",
+    "image": "static/images/jackets/jacket10.png",
+    "price": 20,
+    "description": "Comfortable and stylish jeans.",
+    "brand": "Sypkar",
+    "model": "501",
+    "color": "Blue",
+    "category": "Jacket",
+    "popular": true,
+    "discount": 2
+  }
+]
+

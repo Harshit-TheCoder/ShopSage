@@ -1,6 +1,24 @@
 from flask import Flask, render_template, redirect, request
+from sentence_transformers import SentenceTransformer, util
+import torch
+from products.api_products import api_products
+from products.cargopants import cargopants
+from products.jackets import jackets
+from products.jeans import jeans
+from products.shirts import shirts
+from products.tshirts import tshirts
+
 
 app = Flask(__name__)
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+product_list = []
+product_list.append(api_products)
+product_list.append(cargopants)
+product_list.append(jackets)
+product_list.append(jeans)
+product_list.append(shirts)
+product_list.append(tshirts)
 
 @app.route('/about')
 def about():
